@@ -1,0 +1,157 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  54.78kB
+Step 1/16 : FROM python:3.12-slim AS builder
+ ---> 445121148b18
+Step 2/16 : ENV PYTHONDONTWRITEBYTECODE=1     PYTHONUNBUFFERED=1
+ ---> Running in abd080088976
+ ---> Removed intermediate container abd080088976
+ ---> eff7cc9dac8b
+Step 3/16 : WORKDIR /build
+ ---> Running in dce645f60985
+ ---> Removed intermediate container dce645f60985
+ ---> a746f7bcd692
+Step 4/16 : COPY requirements.txt .
+ ---> 49a226fae606
+Step 5/16 : RUN pip install --user --no-cache-dir -r requirements.txt
+ ---> Running in 0af83b2a0ff4
+Collecting fastapi==0.110.0 (from -r requirements.txt (line 2))
+  Downloading fastapi-0.110.0-py3-none-any.whl.metadata (25 kB)
+Collecting uvicorn==0.29.0 (from uvicorn[standard]==0.29.0->-r requirements.txt (line 3))
+  Downloading uvicorn-0.29.0-py3-none-any.whl.metadata (6.3 kB)
+Collecting pydantic==2.8.1 (from -r requirements.txt (line 4))
+  Downloading pydantic-2.8.1-py3-none-any.whl.metadata (124 kB)
+Collecting httpx<0.28,>=0.27 (from -r requirements.txt (line 7))
+  Downloading httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting pytest==8.2.1 (from -r requirements.txt (line 8))
+  Downloading pytest-8.2.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting starlette<0.37.0,>=0.36.3 (from fastapi==0.110.0->-r requirements.txt (line 2))
+  Downloading starlette-0.36.3-py3-none-any.whl.metadata (5.9 kB)
+Collecting typing-extensions>=4.8.0 (from fastapi==0.110.0->-r requirements.txt (line 2))
+  Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting click>=7.0 (from uvicorn==0.29.0->uvicorn[standard]==0.29.0->-r requirements.txt (line 3))
+  Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting h11>=0.8 (from uvicorn==0.29.0->uvicorn[standard]==0.29.0->-r requirements.txt (line 3))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting annotated-types>=0.4.0 (from pydantic==2.8.1->-r requirements.txt (line 4))
+  Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.20.1 (from pydantic==2.8.1->-r requirements.txt (line 4))
+  Downloading pydantic_core-2.20.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+Collecting iniconfig (from pytest==8.2.1->-r requirements.txt (line 8))
+  Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging (from pytest==8.2.1->-r requirements.txt (line 8))
+  Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting pluggy<2.0,>=1.5 (from pytest==8.2.1->-r requirements.txt (line 8))
+  Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting httptools>=0.5.0 (from uvicorn[standard]==0.29.0->-r requirements.txt (line 3))
+  Downloading httptools-0.7.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+Collecting python-dotenv>=0.13 (from uvicorn[standard]==0.29.0->-r requirements.txt (line 3))
+  Downloading python_dotenv-1.2.1-py3-none-any.whl.metadata (25 kB)
+Collecting pyyaml>=5.1 (from uvicorn[standard]==0.29.0->-r requirements.txt (line 3))
+  Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting uvloop!=0.15.0,!=0.15.1,>=0.14.0 (from uvicorn[standard]==0.29.0->-r requirements.txt (line 3))
+  Downloading uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+Collecting watchfiles>=0.13 (from uvicorn[standard]==0.29.0->-r requirements.txt (line 3))
+  Downloading watchfiles-1.1.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+Collecting websockets>=10.4 (from uvicorn[standard]==0.29.0->-r requirements.txt (line 3))
+  Downloading websockets-15.0.1-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+Collecting anyio (from httpx<0.28,>=0.27->-r requirements.txt (line 7))
+  Downloading anyio-4.11.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting certifi (from httpx<0.28,>=0.27->-r requirements.txt (line 7))
+  Downloading certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<0.28,>=0.27->-r requirements.txt (line 7))
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<0.28,>=0.27->-r requirements.txt (line 7))
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting sniffio (from httpx<0.28,>=0.27->-r requirements.txt (line 7))
+  Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Downloading fastapi-0.110.0-py3-none-any.whl (92 kB)
+Downloading uvicorn-0.29.0-py3-none-any.whl (60 kB)
+Downloading pydantic-2.8.1-py3-none-any.whl (423 kB)
+Downloading pytest-8.2.1-py3-none-any.whl (339 kB)
+Downloading pydantic_core-2.20.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 121.4 MB/s eta 0:00:00
+Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Downloading click-8.3.1-py3-none-any.whl (108 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading httptools-0.7.1-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (517 kB)
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Downloading python_dotenv-1.2.1-py3-none-any.whl (21 kB)
+Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 60.6 MB/s eta 0:00:00
+Downloading starlette-0.36.3-py3-none-any.whl (71 kB)
+Downloading anyio-4.11.0-py3-none-any.whl (109 kB)
+Downloading idna-3.11-py3-none-any.whl (71 kB)
+Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Downloading uvloop-0.22.1-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 97.5 MB/s eta 0:00:00
+Downloading watchfiles-1.1.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+Downloading websockets-15.0.1-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (182 kB)
+Downloading certifi-2025.11.12-py3-none-any.whl (159 kB)
+Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Downloading packaging-25.0-py3-none-any.whl (66 kB)
+Installing collected packages: websockets, uvloop, typing-extensions, sniffio, pyyaml, python-dotenv, pluggy, packaging, iniconfig, idna, httptools, h11, click, certifi, annotated-types, uvicorn, pytest, pydantic-core, httpcore, anyio, watchfiles, starlette, pydantic, httpx, fastapi
+[91m  WARNING: The script websockets is installed in '/root/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[0m[91m  WARNING: The script dotenv is installed in '/root/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[0m[91m  WARNING: The script uvicorn is installed in '/root/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[0m[91m  WARNING: The scripts py.test and pytest are installed in '/root/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[0m[91m  WARNING: The script watchfiles is installed in '/root/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[0m[91m  WARNING: The script httpx is installed in '/root/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+[0mSuccessfully installed annotated-types-0.7.0 anyio-4.11.0 certifi-2025.11.12 click-8.3.1 fastapi-0.110.0 h11-0.16.0 httpcore-1.0.9 httptools-0.7.1 httpx-0.27.2 idna-3.11 iniconfig-2.3.0 packaging-25.0 pluggy-1.6.0 pydantic-2.8.1 pydantic-core-2.20.1 pytest-8.2.1 python-dotenv-1.2.1 pyyaml-6.0.3 sniffio-1.3.1 starlette-0.36.3 typing-extensions-4.15.0 uvicorn-0.29.0 uvloop-0.22.1 watchfiles-1.1.1 websockets-15.0.1
+[91mWARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[0m[91m
+[notice] A new release of pip is available: 25.0.1 -> 25.3
+[notice] To update, run: pip install --upgrade pip
+[0m ---> Removed intermediate container 0af83b2a0ff4
+ ---> d72341df8e76
+Step 6/16 : FROM python:3.12-slim AS production
+ ---> 445121148b18
+Step 7/16 : ARG APP_USER=appuser
+ ---> Running in 88e3f052591b
+ ---> Removed intermediate container 88e3f052591b
+ ---> 58d1ca111424
+Step 8/16 : RUN groupadd -r ${APP_USER}     && useradd -m -r -g ${APP_USER} ${APP_USER}
+ ---> Running in c0f80b3c8a2b
+ ---> Removed intermediate container c0f80b3c8a2b
+ ---> 529908ab9e07
+Step 9/16 : ENV PYTHONDONTWRITEBYTECODE=1     PYTHONUNBUFFERED=1     PATH="/home/${APP_USER}/.local/bin:${PATH}"
+ ---> Running in b5d4d32291ff
+ ---> Removed intermediate container b5d4d32291ff
+ ---> f6e49965e624
+Step 10/16 : WORKDIR /app
+ ---> Running in fa62faa35061
+ ---> Removed intermediate container fa62faa35061
+ ---> c3294f2eb1fa
+Step 11/16 : COPY --from=builder /root/.local /home/${APP_USER}/.local
+ ---> ed5c1a3166a2
+Step 12/16 : COPY . /app
+ ---> 993953cc0e20
+Step 13/16 : RUN chown -R ${APP_USER}:${APP_USER} /app
+ ---> Running in 18626ef30112
+ ---> Removed intermediate container 18626ef30112
+ ---> 30d963dfc82f
+Step 14/16 : USER ${APP_USER}
+ ---> Running in fe585d37a1a3
+ ---> Removed intermediate container fe585d37a1a3
+ ---> d2d5010c4bf8
+Step 15/16 : EXPOSE 80
+ ---> Running in 0f5100a40d21
+ ---> Removed intermediate container 0f5100a40d21
+ ---> f3910d0c54e0
+Step 16/16 : CMD ["uvicorn", "microservice.main:app", "--host", "0.0.0.0", "--port", "80"]
+ ---> Running in aef116ac598c
+ ---> Removed intermediate container aef116ac598c
+ ---> 9f85a2dd5591
+Successfully built 9f85a2dd5591
+Successfully tagged ejemplo-microservice:0.1.0
